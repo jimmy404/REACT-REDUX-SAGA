@@ -3,7 +3,7 @@ import {Container, Typography, Card, Grid, TextField, Button} from '@material-ui
 import styles from './style';
 import { MovieIcon } from '../../icons';
 
-export default () => {
+export default ({history}) => {
 
     const [searchText, setSearchText] = useState('');
     const classes = styles();
@@ -12,8 +12,13 @@ export default () => {
         setSearchText(event.target.value);
     };
 
-    const handleCleanTextClick = event => {console.log(10)};
-    const handleSearchTextClick = event => {console.log(10)};
+    const handleCleanTextClick = event => {
+        setSearchText('');
+    };
+
+    const handleSearchTextClick = event => {
+        history.push(`/results?movieName=${searchText}`)
+    };
 
     return(
         <Container className={classes.container}>
